@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Online course</title>
+<h1><center><u>Registeration form</u></center></h1>
+<br>
+<br>
+<script src="angular.min.js">
+</script>
+
+<script language="javascript">
+angular.module("mod",[]).controller("con1",function($scope){
+$scope.Fname="shilpa";
+$scope.Lname="bhaskar";
+$scope.getvalues=function (){
+
+$scope.confirm=true;
+return $scope.display="Firstname:" + $scope.Fname + "Lastname:" + $scope.Lname + "Address:" + $scope.address +
+ "Mobile Number:" + $scope.mobilenumber+ "Gender:" + $scope.gender +"Email:"+ $scope.email +
+ "Qualification:" + $scope.qualification;
+}
+});
+
+
+</script>
+</head>
+<body ng-app="mod">
+<center>
+<h3>
+<div ng-controller="con1" >
+<p>Firstname : <input type="text" ng-model="Fname" placeholder="Enter name here"></p>
+<br>
+<p>Lastname : <input type="text" ng-model="Lname" placeholder="Enter name here"></p>
+<br>
+Gender:
+<input type="radio" name="gender" ng-model="gender" value="male">male
+<input type="radio" name="gender" ng-model="gender" value="female">female
+<input type="radio" name="gender" ng-model="gender" value="other">other<br>
+<br>
+Address:
+<textarea rows="3" cols="30" name="address" ng-model="address">
+</textarea>
+<br>
+<br>
+Mobile number:
+<input type="number" name="number" ng-model="mobilenumber">
+<br>
+<br>
+Email:
+<input type="text" name="email" ng-model="email">
+<br>
+<br>
+Qualification:
+<select ng-model="qualification">
+<option value="b.e" >B.E</option>
+<option value="m.e">M.E</option>
+<option value="m.tech">M.Tech</option>
+<option value="b.tech" >B.Tech</option>
+<option value="other">others</option>
+</select><br>
+<br>
+
+<br>
+<br>
+ <button ng-click="getvalues()">OK</button>
+ <div ng-show="confirm">
+Confirm your details
+{{display}}
+
+</div>
+
+
+
+</center>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+<head>Login to xplore
+<title>Login page</title>
+<script>
+function validateForm(){
+document.getElementById('display').innerHTML="Firstname: " +  document.hi.firstname.value + "Last name:"  + document.hi.lastname.value + "Address:" +document.hi.address.value;
+
+
+}
+</script>
+</head>
+<body>
+<p id="display"></p>
+<form name="hi" action="#" onsubmit="validateForm();return false;" method="get">
+Name:
+
+Name:<br>
+<input type="text" name="firstname" placeholder="first name"
+
+
+Name:<br>
+<input type="text" name="lastname"placeholder="last name"><br>
+Address:<br>
+<input type="text"name="address"placeholder="address"size="40"><br>
+Date of birth:<br>
+<input type="date"name="bday"><br>
+Gender:<br>
+<input type="radio"name="gender" value="male"checked>male<br>
+<input type="radio"name="gender" value="female" checked>female<br>
+College:<br>
+<input type="text"name="college"placeholder="college"size="40"><br>
+Departement:<br>
+<select name="departement">
+<option value="cse">cse</option>
+<option value="IT">IT</option><br>
+<option value="Mech">Mech</option>
+<option value="Aero">Aero</option>
+</select>
+<br>
+
+Courses Opted:<br>
+<select name="course"size="4" multiple>
+<option value="Software Engineering">Software Engineering</option>
+<option value="cloud computing">cloud computing</option>
+<option value="Aircraft design">Aircraft design</option>
+<option value="Heat and thermodynamics">heat and thermodynamics</option>
+</select><br>
+Arrear:<br>
+<input type="checkbox" name="arrear" value="yes"> yes<br>
+<input type="checkbox" name="arrear" value="no">no<br><br>
+<input type="submit" value="submit">
+</form>
+</body>
+</html>
+
