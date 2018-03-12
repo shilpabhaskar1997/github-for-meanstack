@@ -1,0 +1,59 @@
+
+
+.
+<html ng-app="myapp">
+<head>
+<script src="angular.min.js"></script>
+<script>
+angular.module("myapp",[])
+.service("menuservice",function(){
+	this.item=function(){
+	var products=[
+	{name:"Munch",price:20},
+	{name:"coca cola",price:45},
+	{name:"coffee",price:25}
+	];
+	return products;
+	}})
+	.service("orderservice",function(){
+	   this.order=[];
+	   this.addtocart=function(item){
+	      this.order.push(item);
+	   }
+	   this.total=function(){
+	      var tot=0;
+		  this.order.forEach(function(item){	
+		     tot +=item.price;
+		  });		 
+		  return tot;
+	   }
+	
+	})
+	.controller("menucontroller",function($scope,$rootScope,menuservice,orderservice){
+	$scope.lst=menuservice.item();
+	$scope.addtocart=function(item){
+	   orderservice.addtocart(item);
+	   $rootScope.total=orderservice.total();
+	}
+	}).controller("ordercontroller",function($scope,$rootScope,menuservice,orderservice){
+	$scope.orderitems=orderservice.order;
+	
+	});
+	</script>
+	</head>
+	<body>
+<div ng-controller="menucontroller">
+<div ng-repeat="x in lst">
+{{x.name}} {{x.price}}
+<button ng-click="addtocart(x)">+</button>
+</div>
+
+<div ng-controller="ordercontroller">
+{{orderitems}} {{total}}
+</div>
+
+</div>
+</body>
+</html>
+
+
