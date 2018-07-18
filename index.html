@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search and pagination</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="https://code.angularjs.org/1.5.4/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.4/angular-animate.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header text-center">
+                    <h2>Search sort and pagination in angular js</h2>
+                </div>
+                <form class="form-inline">
+                    <div class="form-group">
+                        <input type="text" ng-model="search" class="form-control" placeholder="Search here">
+                    </div>
+                </form>
+                <hr>
+                <div ng-controller="listData">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th ng-click="sort('id')">Id
+                                    <span class="glyphicon sort-icon" ng-show="sortKey==='id'" ng-class="{'glyphicon-chevron-up':reverse, 'glyphicon-chevron-down':!reverse}"></span>
+                                </th>
+                                <th ng-click="sort('first_name')">First Name
+                                    <span class="glyphicon sort-icon" ng-show="sortKey==='first_name'" ng-class="{'glyphicon-chevron-up':reverse, 'glyphicon-chevron-down':!reverse}"></span>
+                                </th>
+                                <th ng-click="sort('last_name')">Last Name
+                                    <span class="glyphicon sort-icon" ng-show="sortKey==='last_name'" ng-class="{'glyphicon-chevron-up':reverse, 'glyphicon-chevron-down':!reverse}"></span>
+                                </th>
+                                <th ng-click="sort('hobby')">Hobby
+                                    <span class="glyphicon sort-icon" ng-show="sortKey==='hobby'" ng-class="{'glyphicon-chevron-up':reverse, 'glyphicon-chevron-down':!reverse}"></span>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- ng-repeat can be replaced by dir-pagination plugin, dir-paginate  -->
+                            <tr dir-paginate="user in users|itemsPerPage:5|filter:search|orderBy:sortKey:reverse">
+                                <td>{{user.id}}</td>
+                                <td>{{user.first_name}}</td>
+                                <td>{{user.last_name}}</td>
+                                <td>{{user.hobby}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- It will show the pagination part -->
+                    <center>
+                        <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <!-- Its a third party plugin dirPagination. Refer https://github.com/michaelbromley/angularUtils/tree/master/src/directives/pagination -->
+    <script src="dirPagination.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
